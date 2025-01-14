@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Whatsapp_Logo.png' %}">
+</head>
+
+<body>
+    <div class="MainDiv">
+        <div class="header">
+            <div class="MainHeader">
+                <img class="logo" id="idf_logo" src="{% static 'images/Whatsapp_Logo.png' %}">
+                <p id="MainTitle">Whatsapp Messanger</p>
+                <p id="Secondry_title">The Ultimate Django Experience</p>
+            </div>
+            <div class="warning">
+                {% if error_message %}
+                <div class="Error">
+                    <p>{{ error_message|safe }}</p>
+                </div>
+                {% endif %}
+                {% if messages %}
+                <div class="Success">
+                    {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form">
+            {% csrf_token %} <!-- Added CSRF token -->
+            <div class="buttonForNextPage">
+                <button type="button" class="NextPage" id="Registration">Registration</button>
+            </div>
+            <div class="form__group" id="UserNameDiv">
+                <input class="form__field" type="text" id="UserName" placeholder="User Name" required />
+                <label for="UserName" class="form__label">User Name</label>
+
+            </div>
+
+            <div class="form__group" id="PasswordDiv">
+                <input class="form__field" type="password" id="Password" placeholder="Password" required />
+                <label for="Password" class="form__label">Password</label>
+
+            </div>
+
+            <div class="buttons">
+                <div class="buttonForNextPage">
+                    <button type="button" class="NextPage" id="Login">Login</button>
+                </div>
+                <div class="buttonForNextPage" id="divClear">
+                    <button type="button" class="NextPage" id="Clear" title="Clear form">🗑️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

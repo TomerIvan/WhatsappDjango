@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'js/messages.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="{% static 'images/Whatsapp_Logo.png' %}">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- In messages.html, modify the top-nav div -->
+        <nav class="top-nav">
+            <div class="page_title">
+                <img class="logo" id="idf_logo" src="{% static 'images/Whatsapp_Logo.png' %}">
+                <h1>Whatsapp Messanger</h1>
+            </div>
+            <div class="user-info">
+                <span id="greeting"></span>
+                <div class="userdetails">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                <button id="logoutBtn" class="btn-logout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
+        </nav>
+
+        <div class="content-wrapper">
+            <div class="messages-sidebar">
+                <div class="sidebar-header">
+                    <button id="newMessageBtn" class="btn-primary">New Message ✉️</button>
+                </div>
+                <div class="messages-list" id="messagesList">
+                    {% for message in messages %}
+                    <div class="message-preview" data-message-id="{{ message.id }}">
+                        <div class="sender-info">
+                            <span class="sender-name">{{ message.sender.last_name }} {{message.sender.first_name}}</span>
+                            <span class="message-time">{{ message.timestamp|date:"M d, Y H:i" }}</span>
+                        </div>
+                        <div class="message-snippet">
+                            {{ message.content|truncatewords:5 }}
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="message-content">
+                <div id="messageThread" class="message-thread">
+                    <div class="no-message-selected">
+                        Select a message to view the conversation
+                    </div>
+                </div>
+                <div id="replySection" class="reply-section" style="display: none;">
+                    <button id="replyBtn" class="btn-primary">Reply 🔁</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

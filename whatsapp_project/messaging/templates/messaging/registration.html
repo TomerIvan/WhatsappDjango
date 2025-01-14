@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'js/registration.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Registraion</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Whatsapp_Logo.png' %}">
+</head>
+
+<body>
+    <div class="MainDiv">
+        <div class="header">
+            <div class="MainHeader">
+                <div class="user-info {% if request.user.is_authenticated %}authenticated{% endif %}">
+                    {% if request.user.is_authenticated %}
+                    <span id="greeting">,Hello</span>
+                    <div class="userdetails">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                    <button id="logoutBtn" class="btn-logout">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Logout
+                    </button>
+                    {% endif %}
+                </div>
+                <div class="title-section">
+                    
+                    <div class = "titles">
+                        <p id="MainTitle">Whatsapp Messenger</p>
+                        <p id="Secondry_title">The Ultimate Django Experience</p>
+                    </div>
+                    <img class="logo" id="idf_logo" src="{% static 'images/Whatsapp_Logo.png' %}">
+                    
+                </div>
+
+
+
+                
+            </div>
+            <div class="warning">
+                {% if error_message %}
+                <div class="Error">
+                    <p>{{ error_message }}</p>
+                </div>
+                {% endif %}
+                {% if messages %}
+                <div class="Success">
+                    {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="buttonForNextPage" id="divLogin">
+                <button type="button" class="NextPage" id="Login">Login</button>
+            </div>
+            <div class="form__group" id="UserNameDiv">
+                <input class="form__field" type="text" name="UserName" id="UserName" placeholder="User Name" required />
+                <label for="UserName" class="form__label">User Name</label>
+                <span class="form__error"></span> <!-- Error message placeholder -->
+            </div>
+
+            <div class="form__group" id="FirstNameDiv">
+                <input class="form__field" type="text" name="FirstName" id="FirstName" placeholder="First Name"
+                    required />
+                <label for="FirstName" class="form__label">First Name</label>
+                <span class="form__error"></span> <!-- Error message placeholder -->
+            </div>
+
+            <div class="form__group" id="LastNameDiv">
+                <input class="form__field" type="text" Name="LastName" id="LastName" placeholder="Last Name" required />
+                <label for="LastName" class="form__label">Last Name</label>
+                <span class="form__error"></span> <!-- Error message placeholder -->
+            </div>
+
+            <div class="form__group" id="PasswordDiv">
+                <input class="form__field" type="password" Name="Password" id="Password" placeholder="Password"
+                    required />
+                <label for="Password" class="form__label">Password</label>
+                <span class="form__error"></span> <!-- Error message placeholder -->
+            </div>
+
+            <div class="buttons">
+                <div class="buttonForNextPage" id="divRegister">
+                    <button type="submit" class="NextPage" id="Register">Register</button>
+                </div>
+                <div class="buttonForNextPage" id="divClear">
+                    <button type="button" class="NextPage" id="Clear">🗑️</button>
+                </div>
+            </div>
+
+
+        </form>
+</body>
+
+</html>

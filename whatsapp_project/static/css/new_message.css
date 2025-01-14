@@ -1,0 +1,303 @@
+:root {
+    --primary: #00a761;
+    --secondary: #00c241;
+    --white: #082836;
+    --offwhite: #fdfcfa;
+    --gray: #082836;
+    --text-dir: ltr;
+    --whatsapp-green-1: #25d366;
+    --whatsapp-green-2: #128c7e;
+    --whatsapp-light-green: #e7f7f2;
+    --warning-red: rgb(255, 39, 39);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans Hebrew';
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds-light.png");
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.header h1 {
+    color: var(--primary);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 0;
+}
+
+.container {
+    width: 95%;
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+}
+
+.message-form {
+    background-color: white;
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+}
+
+.original-message {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    overflow-wrap: break-word;
+}
+
+.original-message h3 {
+    color: #666;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    margin-bottom: 0.5rem;
+}
+
+.original-content {
+    padding: 0.5rem;
+    overflow-x: auto;
+}
+
+.sender-info {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+}
+
+.timestamp {
+    color: #666;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.recipient-input-container {
+    position: relative;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    height: 100px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.suggestion-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+}
+
+.character-count {
+    text-align: right;
+    color: #666;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 0.25rem;
+}
+
+.character-count.error {
+    color: #dc3545;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    transition: background-color 0.2s;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #439985;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: var(--secondary);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .message-form {
+        padding: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    input[type="text"], textarea {
+        padding: 0.6rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: none;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn-back, .button-group {
+        display: none;
+    }
+}
+
+
+.btn-logout {
+    display: inline-block;
+    /* margin-top: 10px; */
+    padding: 12px 15px; /* Match the back button padding */
+    background-color: var(--warning-red);
+    color: white;
+    text-decoration: none;
+    border: none; /* Remove borders */
+    outline: none; /* Remove focus outline */
+    border-radius: 5px; /* Match back button's rounded corners */
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Consistent font size */
+    transition: background-color 0.3s ease;
+    text-align: center; /* Center text for consistent appearance */
+    
+}
+
+.btn-logout:hover {
+    background-color: rgb(200, 30, 30); /* Darker red for hover effect */
+    cursor: pointer;
+}
+
+.btn-logout:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 0 3px rgba(255, 39, 39, 0.3); /* Optional focus shadow */
+}
