@@ -13,7 +13,30 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
+
+URL configuration for the project.
+
+This file contains the URL patterns for the Django web application. Each URL is mapped to a view function that handles requests to that URL.
+
+URL Patterns:
+- The root URL ('/') and 'login/' path are routed to the `login_view` from the `views.py` file to handle user login.
+- 'registration/' is mapped to the `create_user` view, which handles user registration.
+- 'messages/' is routed to the `messages_view` for displaying messages.
+- 'new_message/' is mapped to the `new_message` view for creating a new message or replying to an existing one.
+- 'api/messages/latest/' is connected to the `latest_messages_api` for retrieving the latest messages in a JSON format.
+- 'api/users/search/' is connected to the `search_users` API for searching users by username, first name, or last name.
+- 'api/messages/send/' is mapped to the `send_message` view to handle sending a message.
+- The 'logout/' path uses the `LogoutView` to log the user out of the application.
+
+Static and Media Files:
+- In development (when `DEBUG=True`), static and media files are served by Django with `static()` and `MEDIA_URL` respectively.
+
+Note:
+- For production environments, make sure `DEBUG` is set to `False` to avoid serving static files via Django, and instead use a dedicated web server like Nginx or Apache for this purpose.
 """
+
+
 from django.contrib import admin
 from django.urls import path
 from messaging import views
