@@ -41,7 +41,6 @@ Notes:
 - In production, `DEBUG` should be set to `False`, and proper security settings should be applied.
 """
 
-
 from pathlib import Path
 import os
 
@@ -114,6 +113,12 @@ DATABASES = {
 LOGIN_URL = '/login/'
 LOGOUT_REDIRECT_URL = 'login'
 
+import os
+
+# Make sure the logs directory exists
+LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+os.makedirs(LOGS_DIR, exist_ok=True)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -122,27 +127,40 @@ LOGGING = {
             'format': '{levelname} {asctime} {module} {message}',
             'style': '{',
         },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
     },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/app.log'),
+            'filename': os.path.join(LOGS_DIR, 'app.log'),
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
     },
     'loggers': {
-        'django': {
-            'handlers': ['file'],
+        '': {  # Root logger
+            'handlers': ['console', 'file'],
             'level': 'DEBUG',
-            'propagate': True,
+        },
+        'django': {  # Django logger
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'your_app_name': {  # Your application logger
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
         },
     },
 }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

@@ -8,18 +8,10 @@ A Django-based WhatsApp integration project that allows you to interact with Wha
 
 - Python 3.8 or higher
 - pip (Python package installer)
-- Git
 
 ## Installation
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/TomerIvan/WhatsappDjango.git
-cd WhatsappDjango
-```
-
-### 2. Set Up Virtual Environment
+### 1. Set Up Virtual Environment
 
 #### On Windows:
 ```bash
@@ -64,21 +56,7 @@ python manage.py migrate
 
 Django's `collectstatic` command collects all static files into a single directory that can be served by a web server. Here's how to set it up:
 
-1. Configure static files in settings.py:
-```python
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-```
-
-2. Create the static directory:
-```bash
-mkdir static
-```
-
-3. Run collectstatic:
+1. Run collectstatic:
 ```bash
 python manage.py collectstatic
 ```
@@ -158,6 +136,46 @@ rm -rf venv
    ```bash
    chmod +x venv/bin/activate
    ```
+
+## Project Structure
+```bash
+project-name/
+├── manage.py                # Django's command-line utility for administrative tasks
+├── requirements.txt         # List of dependencies (including Django)
+├── readme.md                # Readme.md File
+├── db.sqlite3               # for DB (optional)                    # Virtual environment directory (generated during setup)
+├── whatsapp/            # Project's core directory containing settings and URL routing
+│   ├── __init__.py          # Django original file
+│   ├── settings.py          # Project settings file
+│   ├── urls.py              # URL routing for the entire project
+│   ├── wsgi.py              # WSGI entry point for deployment
+│   ├── asgi.py              # asgi entry point for deployment
+├── staticfiles/
+│   ├── admin/
+│   ├── css/
+│   │   ├── login.css)
+│   │   ├── messages.css)
+│   │   ├── [new_message.css](whatsapp_project/staticfiles/css/new_message.css)
+│   │   ├── [registration.css](whatsapp_project/staticfiles/css/registration.css)
+│   ├── js/
+│   │   ├── login.js
+│   │   ├── messages.js
+│   │   ├── new_message.js
+│   │   ├── registration.js
+│   ├── images/
+│   │   ├── Whatsapp_Logo.png
+├── app_name/                # A Django app within the project
+│   ├── migrations/          # Database migrations
+│   ├── models.py            # Database models
+│   ├── views.py             # View logic
+│   ├── urls.py              # URL routing for the app
+│   ├── admin.py             # Admin interface customization
+├── templates/               # HTML templates
+├── static/                  # Static files (CSS, JavaScript, images)
+└── manage.py                # Django management utility
+```
+
+
 
 ## License
 

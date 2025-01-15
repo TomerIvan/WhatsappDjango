@@ -1,4 +1,34 @@
 $(document).ready(function() {
+    $('#logoutBtn').click(function () {
+        $.ajax({
+            url: '/logout/',
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            success: function () {
+                window.location.href = 'http://127.0.0.1:8000/login/';
+            },
+            error: function (xhr) {
+                console.error('Error logging out:', xhr);
+            }
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
     let typingTimer;
     const doneTypingInterval = 500; // 0.5 seconds
 

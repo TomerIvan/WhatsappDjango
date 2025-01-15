@@ -40,6 +40,13 @@ $(document).ready(function () {
                         }
                     });
                 }
+            },
+            error: function(xhr) {
+                if (xhr.status == 440) {
+                    // Force immediate redirect
+                    window.location.href = '/login/';
+                }
+                
             }
         });
     }
@@ -49,8 +56,8 @@ $(document).ready(function () {
 
         const current_user = $('.userdetails').text().trim();
         const latestMessage = thread[thread.length - 1];
-        const messageSnippet = latestMessage.content.substring(0, 50) + 
-                             (latestMessage.content.length > 50 ? "..." : "");
+        const messageSnippet = latestMessage.content.substring(0, 30) + 
+                             (latestMessage.content.length > 30 ? "..." : "");
         const timestamp = formatDate(latestMessage.timestamp);
         
         const firstMessage = thread[0];
@@ -149,6 +156,13 @@ $(document).ready(function () {
                 if (threadData && threadData.messages) {
                     displayMessageThread(threadData.messages);
                 }
+            },
+             error: function(xhr) {
+                if (xhr.status == 440) {
+                    // Force immediate redirect
+                    window.location.href = '/login/';
+                }
+                
             }
         });
     });

@@ -238,7 +238,7 @@ function setupCSRFToken() {
 
 function showsuccess() {
     var success_msg = $('.Success').text().trim();
-    if (success_msg.length > 0) {
+    if (success_msg.length > 0 || success_msg == "Registration Successful") {
         $(".warning").css('background-color', 'green');
         $(".warning").slideDown(400, function () {
             setTimeout(function () {

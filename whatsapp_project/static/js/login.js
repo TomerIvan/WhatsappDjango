@@ -238,7 +238,7 @@ function setupCSRFToken() {
 
 function showsuccess() {
     var success_msg = $('.Success').text().trim();
-    if (success_msg.length > 0) {
+    if (success_msg == 'Registration successful!') {
         $(".warning").css('background-color', 'green');
         $(".warning").slideDown(400, function () {
             setTimeout(function () {
@@ -252,6 +252,21 @@ function showsuccess() {
             }, 5300);
         });
     }
+    else if (success_msg == 'Your session has expired. Please log in again.'){
+        $(".warning").css('background-color', 'var(--warning-red)');
+        $(".warning").css('display', 'flex');
+        $(".warning").css('justify-content', 'center');
+        
+        $("p.warning").css('width', '100%');
+        $(".warning").slideDown(400, function () {
+            setTimeout(function () {
+                $(".warning").slideUp(300, function() {
+                    $(".warning").css('background-color', 'var(--warning-red)');
+                });
+            }, 5000);
+        })
+    }
+
 }
 
 

@@ -40,6 +40,13 @@ $(document).ready(function () {
                         }
                     });
                 }
+            },
+            error: function(xhr) {
+                if (xhr.status == 440) {
+                    // Force immediate redirect
+                    window.location.href = '/login/';
+                }
+                
             }
         });
     }
@@ -149,6 +156,13 @@ $(document).ready(function () {
                 if (threadData && threadData.messages) {
                     displayMessageThread(threadData.messages);
                 }
+            },
+             error: function(xhr) {
+                if (xhr.status == 440) {
+                    // Force immediate redirect
+                    window.location.href = '/login/';
+                }
+                
             }
         });
     });

@@ -55,6 +55,7 @@ urlpatterns = [
     path('api/users/search/', views.search_users, name='search_users'),
     path('api/messages/send/', views.send_message, name='send_message'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('update-activity/', views.update_activity, name='update_activity'),
 
 ]
 
