@@ -656,3 +656,29 @@ INFO 2025-01-15 20:48:14,677 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3
 INFO 2025-01-15 20:48:19,701 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
 INFO 2025-01-15 20:48:24,704 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
 INFO 2025-01-15 20:48:29,702 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:48:34,677 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:48:39,683 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:48:44,677 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:48:49,673 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:48:54,678 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:48:59,680 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:04,680 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:09,678 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:14,668 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:19,674 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:24,680 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:29,690 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:34,674 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:39,669 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:44,674 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:49,671 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:54,686 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:49:59,682 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:50:04,683 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:50:09,688 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:50:14,669 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:50:19,676 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:50:23,650 autoreload C:\Users\Tomer\Documents\Python Projects\Year 3\Semester A\Network Comunication Managment\EX2 - Django\whatsapp_project\messaging\views.py changed, reloading.
+INFO 2025-01-15 20:50:24,382 autoreload Watching for file changes with StatReloader
+INFO 2025-01-15 20:50:24,695 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609
+INFO 2025-01-15 20:50:29,687 basehttp "GET /api/messages/latest/ HTTP/1.1" 200 3609

@@ -25,7 +25,29 @@ SESSION_IDLE_TIMEOUT = 1800
 def check_session_timeout(view_func):
     """
     Decorator to check for session timeout before executing the view.
-    Logs out the user if the session has timed out.
+
+    This decorator checks if the user session has expired based on the
+    'last_activity' timestamp stored in the session. If the session has
+    timed out, the user will be logged out and a message will be displayed.
+    If the request is an API call, a JSON response with a session expired
+    status is returned, otherwise the user is redirected to the login page.
+    If the request is a non-API, non-AJAX request, the session's 'last_activity'
+    timestamp is updated to the current time.
+
+    Args:
+        view_func (function): The view function to be decorated.
+
+    Returns:
+        function: A wrapped view function that performs the session timeout check
+                  before executing the original view function.
+
+    Raises:
+        None
+
+    Notes:
+        - This decorator only works for authenticated users.
+        - It uses the `SESSION_IDLE_TIMEOUT` variable to determine the timeout duration.
+        - Non-API, non-AJAX requests are the only ones that update the 'last_activity' timestamp.
     """
 
     @wraps(view_func)
